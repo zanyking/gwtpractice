@@ -19,6 +19,10 @@ public interface MainView extends IsWidget{
 	 */
 	Widget root();
 	
+	public void setBannerView(BannerView bannerView);
+	public void setSidebarView(SidebarView sidebarView);
+	public void setContentView(ContentView contentView);
+
 	/**
 	 * @author Ian YT Tsai (Zanyking)
 	 */
@@ -29,6 +33,12 @@ public interface MainView extends IsWidget{
 		MyPlace getWhere();
 		
 		void init();
+		
+//		void setBannerView(BannerView bannerView);
+//		void setSidebarView(SidebarView sidebarView);
+//		void setContentView(ContentView contentView);
 	}//end of class...
+
+	void setPresenter(Presenter presenter);
 	
 }

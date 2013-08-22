@@ -20,8 +20,11 @@ public class ContentPresenter extends AbstractPresenter implements Presenter {
 	private ContentView view;
 
 	@Inject
-	public ContentPresenter( EventBus evtBus) {
+	public ContentPresenter(ContentView view, 
+			EventBus evtBus) {
 		super(evtBus);
+		this.view = view;
+		view.setPresenter(this);
 	}
 	
 	protected void restoreState(Place myPlace){
@@ -37,7 +40,8 @@ public class ContentPresenter extends AbstractPresenter implements Presenter {
 	}
 
 	@Override
-	public void setView(ContentView view) {
-		this.view = view;
+	public ContentView getView() {
+		return view;
 	}
+
 }

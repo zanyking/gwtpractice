@@ -26,10 +26,13 @@ public class BannerPresenter extends AbstractPresenter implements Presenter {
 	 * @param evtBus
 	 */
 	@Inject
-	public BannerPresenter(EventBus evtBus) {
+	public BannerPresenter(BannerView view, 
+			EventBus evtBus) {
 		super(evtBus);
+		this.view = view;
+		view.setPresenter(this);
 	}
-	
+
 	protected void restoreState(Place mp) {
 		String bgColor = "";
 		String color = "";
@@ -51,9 +54,10 @@ public class BannerPresenter extends AbstractPresenter implements Presenter {
 	}
 
 	@Override
-	public void setView(BannerView view) {
-		this.view = view;
+	public BannerView getView() {
+		return view;
 	}
+
 
 
 

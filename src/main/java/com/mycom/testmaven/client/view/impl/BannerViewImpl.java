@@ -25,9 +25,7 @@ public class BannerViewImpl extends FlowPanel implements BannerView, ClickHandle
 	private TextBox usrNameTxb;
 	
 	@Inject
-	public BannerViewImpl(Presenter presenter) {
-		this.presenter = presenter;
-		presenter.setView(this);
+	public BannerViewImpl() {
 		label = new Label("Hello! please type your name!");
 		label.setStylePrimaryName("header-title");
 		add(label);
@@ -71,5 +69,9 @@ public class BannerViewImpl extends FlowPanel implements BannerView, ClickHandle
 	@Override
 	public void setTextColor(String color) {
 		this.getElement().getStyle().setColor(color);
+	}
+
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
 	}
 }

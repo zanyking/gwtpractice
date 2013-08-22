@@ -5,7 +5,6 @@ package com.mycom.testmaven.client.view.impl;
 
 import javax.inject.Inject;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
@@ -26,10 +25,9 @@ public class MainViewImpl extends Composite implements MainView{
 
 	
 	
-	private static MainViewLayoutPanelUiBinder uiBinder = GWT
-            .create(MainViewLayoutPanelUiBinder.class);
+//	private static Binder uiBinder = GWT.create(Binder.class);
 	
-	public interface MainViewLayoutPanelUiBinder extends UiBinder <Widget, MainViewImpl>{
+	public interface Binder extends UiBinder <Widget, MainViewImpl>{
 	}
 	
 	
@@ -40,18 +38,25 @@ public class MainViewImpl extends Composite implements MainView{
 	@UiField
 	Panel contentPanel;
 	
+	@SuppressWarnings("unused")
+	private Presenter presenter;
+	
 	@Inject
-	public MainViewImpl(BannerView bannerView, 
-			SidebarView sidebarView,
-			ContentView contentView) {
-		initWidget(uiBinder.createAndBindUi(this));
-		bannerPanel.add(bannerView);
-		
-		sidebarPanel.add(sidebarView);
-		
-		contentPanel.add(contentView);
+	public MainViewImpl(Binder binder) {
+		initWidget(binder.createAndBindUi(this));
 	}
 
+	public void setBannerView(BannerView bannerView) {
+		bannerPanel.add(bannerView);
+	}
+
+	public void setSidebarView(SidebarView sidebarView) {
+		sidebarPanel.add(sidebarView);
+	}
+
+	public void setContentView(ContentView contentView) {
+		contentPanel.add(contentView);
+	}
 
 	@Override
 	public Widget asWidget() {
@@ -61,5 +66,11 @@ public class MainViewImpl extends Composite implements MainView{
 	@Override
 	public Widget root() {
 		return this;
+	}
+
+	@Override
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
+		
 	}
 }

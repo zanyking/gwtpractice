@@ -28,13 +28,15 @@ public interface SidebarView  extends IsWidget{
 	void setContentBackGroundColorInput(String bgColor);
 	void setContentLabelColorInput(String color);
 	
+	
+	void setPresenter(Presenter presenter);
 	/**
 	 * 
 	 * @author Ian YT Tsai (Zanyking)
 	 *
 	 */
 	interface Presenter{
-		void setView(SidebarView view);//XXX reverse control due to UiBinder
+		SidebarView getView();
 		
 		void goToFirst();
 

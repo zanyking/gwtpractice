@@ -11,28 +11,21 @@ import com.google.gwt.user.client.ui.IsWidget;
  */
 public interface BannerView  extends IsWidget{
 
-	/**
-	 * 
-	 * @param name
-	 */
 	void setUserName(String name);
 	
-	/**
-	 * 
-	 * @param newTile
-	 */
 	void setTitle(String newTile);
-	/**
-	 * 
-	 * @author Ian YT Tsai (Zanyking)
-	 *
-	 */
-	interface Presenter{
-		void setUserName(String txt);
-		void setView(BannerView view);//XXX reverse control due to UiBinder
-	}
-	
+
 	void setBackGroundColor(String bgColor);
 
 	void setTextColor(String color);
+	
+
+	interface Presenter{
+		void setUserName(String txt);
+		BannerView getView();//XXX reverse control due to UiBinder
+	}
+	
+
+	
+	void setPresenter(Presenter presenter);
 }

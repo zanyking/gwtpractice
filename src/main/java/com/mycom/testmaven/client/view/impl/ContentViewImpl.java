@@ -16,13 +16,12 @@ import com.mycom.testmaven.client.view.ContentView;
  */
 public class ContentViewImpl extends FlowPanel implements ContentView{
 
+	@SuppressWarnings("unused")
 	private Presenter presenter;
 	private Label label;
 	
 	@Inject
-	public ContentViewImpl(Presenter presenter) {
-		this.presenter = presenter;
-		this.presenter.setView(this);
+	public ContentViewImpl() {
 		label = new Label("a test content which is good to perform test.");
 		this.add(label);
 	}
@@ -38,6 +37,10 @@ public class ContentViewImpl extends FlowPanel implements ContentView{
 	@Override
 	public void setTextColor(String color) {
 		this.getElement().getStyle().setColor(color);
+	}
+	@Override
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
 	}
 
 }

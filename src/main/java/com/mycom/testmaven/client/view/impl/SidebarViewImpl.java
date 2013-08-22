@@ -23,9 +23,7 @@ public class SidebarViewImpl extends VerticalPanel implements SidebarView, Click
 	private Presenter presenter;
 	
 	@Inject
-	public SidebarViewImpl(Presenter presenter) {
-		this.presenter = presenter;
-		presenter.setView(this);
+	public SidebarViewImpl() {
 		drawFirst();
 		this.add(new Label("====================="));
 		drawSecond();
@@ -178,6 +176,14 @@ public class SidebarViewImpl extends VerticalPanel implements SidebarView, Click
 	@Override
 	public void setContentLabelColorInput(String color) {
 		contentTextColorTxb.setValue(color);
+	}
+
+
+
+	@Override
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
+		
 	}
 	
 	

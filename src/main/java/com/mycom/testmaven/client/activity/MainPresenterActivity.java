@@ -12,7 +12,10 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.mycom.testmaven.client.event.InitStateEvent;
 import com.mycom.testmaven.client.event.ToChangePlaceEvent;
 import com.mycom.testmaven.client.place.MyPlace;
+import com.mycom.testmaven.client.view.BannerView;
+import com.mycom.testmaven.client.view.ContentView;
 import com.mycom.testmaven.client.view.MainView;
+import com.mycom.testmaven.client.view.SidebarView;
 
 /**
  * @author Ian YT Tsai (Zanyking)
@@ -28,19 +31,26 @@ public class MainPresenterActivity extends AbstractActivity implements MainView.
 	
 	@Inject
 	public MainPresenterActivity(MainView view,
+			BannerView.Presenter bannerPresenter,
+			SidebarView.Presenter sidebarPresenter,
+			ContentView.Presenter contentPresenter,
 			EventBus evtBus,
 			PlaceController placeController) {
 		this.evtBus = evtBus;
 		this.placeController = placeController;
 		this.view = view;
+		view.setPresenter(this);
+		//init view
+		view.setBannerView(bannerPresenter.getView());
+		view.setSidebarView(sidebarPresenter.getView());
+		view.setContentView(contentPresenter.getView());
+		
 		evtBus.addHandler(ToChangePlaceEvent.TYPE, new ToChangePlaceEvent.Handler() {
 			public void onPlaceChanged(MyPlace myPlace) {
 				goTo(myPlace);
 			}
 		});
 	}
-
-	
 
 	@Override
 	public void start(AcceptsOneWidget panel,

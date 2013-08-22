@@ -24,14 +24,11 @@ public class SidebarPrensenter extends AbstractPresenter implements Presenter {
 	private SidebarView view;
 	
 	@Inject
-	public SidebarPrensenter( EventBus evtBus) {
+	public SidebarPrensenter(SidebarView view, EventBus evtBus) {
 		super(evtBus);
-	}
-	
-	public void setView(SidebarView view) {
 		this.view = view;
+		view.setPresenter(this);
 	}
-	
 	
 	protected void restoreState(Place mp){
 		String bgColor = "";
@@ -84,6 +81,11 @@ public class SidebarPrensenter extends AbstractPresenter implements Presenter {
 
 	private void gotoPlace(MyPlace newPlace){//XXX trigger point of firing PlaceChangeEvent.
 		evtBus.fireEvent(new ToChangePlaceEvent(newPlace));
+	}
+
+	@Override
+	public SidebarView getView() {
+		return view;
 	}
 	
 }
