@@ -14,18 +14,20 @@ import com.mycom.testmaven.client.event.InitStateEvent;
  */
 public abstract class AbstractPresenter {
 	protected EventBus evtBus;
+	protected Place place;
 
 	public AbstractPresenter(EventBus evtBus) {
 		this.evtBus = evtBus;
 		evtBus.addHandler(PlaceChangeEvent.TYPE, new PlaceChangeEvent.Handler(){
 			@Override
 			public void onPlaceChange(PlaceChangeEvent event) {
-				Place place = event.getNewPlace();
+				place = event.getNewPlace();
 				System.out.println(this.getClass()+" handling PlaceChangeEvent...");
 				restoreState(place);
 			}});
 		evtBus.addHandler(InitStateEvent.TYPE, new InitStateEvent.Handler(){
 			public void onInit(Place place) {
+				AbstractPresenter.this.place = place;
 				System.out.println(this.getClass()+" handling InitStateEvent...");
 				restoreState(place);
 			}});
@@ -33,6 +35,12 @@ public abstract class AbstractPresenter {
 	}
 
 	protected abstract void restoreState(Place place) ;
-	
+
+	/*
+	 * for testing
+	 */
+	Place getPlace() {
+		return place;
+	}
 	
 }
