@@ -11,11 +11,11 @@ import com.mycom.testmaven.client.place.MyPlace;
  * @author Ian YT Tsai (Zanyking)
  *
  */
-public class ToChangePlaceEvent extends Event<ToChangePlaceEvent.Handler> {
+public class ChangeFragmentStyleEvent extends Event<ChangeFragmentStyleEvent.Handler> {
 
 	public interface Handler extends EventHandler{
 		
-		void onPlaceChanged(MyPlace myPlace);
+		void chanageFragementStyle(MyPlace myPlace);
 		
 	}
 	public static final Type<Handler> TYPE = 
@@ -27,7 +27,7 @@ public class ToChangePlaceEvent extends Event<ToChangePlaceEvent.Handler> {
 	 * 
 	 * @param myPlace
 	 */
-	public ToChangePlaceEvent(MyPlace myPlace) {
+	public ChangeFragmentStyleEvent(MyPlace myPlace) {
 		this.myPlace = myPlace;
 	}
 
@@ -38,7 +38,7 @@ public class ToChangePlaceEvent extends Event<ToChangePlaceEvent.Handler> {
 
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onPlaceChanged(myPlace);
+		handler.chanageFragementStyle(myPlace);
 	}
 
 	

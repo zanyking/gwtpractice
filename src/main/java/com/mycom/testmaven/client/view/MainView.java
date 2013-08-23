@@ -34,9 +34,6 @@ public interface MainView extends IsWidget{
 		
 		void init();
 		
-//		void setBannerView(BannerView bannerView);
-//		void setSidebarView(SidebarView sidebarView);
-//		void setContentView(ContentView contentView);
 	}//end of class...
 
 	void setPresenter(Presenter presenter);

@@ -10,7 +10,7 @@ import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.web.bindery.event.shared.EventBus;
 import com.mycom.testmaven.client.event.InitStateEvent;
-import com.mycom.testmaven.client.event.ToChangePlaceEvent;
+import com.mycom.testmaven.client.event.ChangeFragmentStyleEvent;
 import com.mycom.testmaven.client.place.MyPlace;
 import com.mycom.testmaven.client.view.BannerView;
 import com.mycom.testmaven.client.view.ContentView;
@@ -44,9 +44,10 @@ public class MainPresenterActivity extends AbstractActivity implements MainView.
 		view.setBannerView(bannerPresenter.getView());
 		view.setSidebarView(sidebarPresenter.getView());
 		view.setContentView(contentPresenter.getView());
-		
-		evtBus.addHandler(ToChangePlaceEvent.TYPE, new ToChangePlaceEvent.Handler() {
-			public void onPlaceChanged(MyPlace myPlace) {
+		//subscribe...
+		evtBus.addHandler(ChangeFragmentStyleEvent.TYPE, 
+				new ChangeFragmentStyleEvent.Handler() {
+			public void chanageFragementStyle(MyPlace myPlace) {
 				goTo(myPlace);
 			}
 		});
@@ -56,6 +57,7 @@ public class MainPresenterActivity extends AbstractActivity implements MainView.
 	public void start(AcceptsOneWidget panel,
 			com.google.gwt.event.shared.EventBus eventBus) {
 		try{
+			//drawing...
 			panel.setWidget(view.root());
 		}catch(RuntimeException e){
 			e.printStackTrace();

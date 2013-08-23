@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import com.google.gwt.place.shared.Place;
 import com.google.web.bindery.event.shared.EventBus;
-import com.mycom.testmaven.client.event.ToChangePlaceEvent;
+import com.mycom.testmaven.client.event.ChangeFragmentStyleEvent;
 import com.mycom.testmaven.client.place.FirstPlace;
 import com.mycom.testmaven.client.place.MyPlace;
 import com.mycom.testmaven.client.place.SecondPlace;
@@ -62,25 +62,27 @@ public class SidebarPrensenter extends AbstractPresenter implements Presenter {
 		FirstPlace newPlace = FirstPlace.newInstance(
 				view.getSidebarBackgroundColorInput(), 
 				view.getSidebarLabelColorInput());
-		gotoPlace(newPlace);
+		fireStyleChange(newPlace);
 	}
 	@Override
 	public void goToSecond() {
 		SecondPlace newPlace = SecondPlace.newInstance(
 				view.getBannerBackgroundColorInput(), 
 				view.getBannerLabelColorInput());
-		gotoPlace(newPlace);
+		fireStyleChange(newPlace);
 	}
 	@Override
 	public void goToThird() {
 		ThirdPlace newPlace = ThirdPlace.newInstance(
 				view.getContentBackgroundColorInput(), 
 				view.getContentLabelColorInput());
-		gotoPlace(newPlace);
+		fireStyleChange(newPlace);
 	}
 
-	private void gotoPlace(MyPlace newPlace){//XXX trigger point of firing PlaceChangeEvent.
-		evtBus.fireEvent(new ToChangePlaceEvent(newPlace));
+	private void fireStyleChange(MyPlace newPlace){
+		//XXX trigger point of firing PlaceChangeEvent.
+		//publish 
+		evtBus.fireEvent(new ChangeFragmentStyleEvent(newPlace));
 	}
 
 	@Override

@@ -36,6 +36,12 @@ public class BannerPresenter extends AbstractPresenter implements Presenter {
 	protected void restoreState(Place mp) {
 		String bgColor = "";
 		String color = "";
+		//strategy 2
+//		FragmentStyle fstl = mp.getFragmentStyle();
+//		if(fstl.hasBannerStyle()){
+//			
+//		}
+		//strategy 1
 		if(mp instanceof SecondPlace){
 			SecondPlace tp = (SecondPlace) mp;
 			bgColor = tp.getBgColor();

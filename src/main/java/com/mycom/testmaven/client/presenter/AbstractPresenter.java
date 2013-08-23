@@ -31,7 +31,6 @@ public abstract class AbstractPresenter {
 				System.out.println(this.getClass()+" handling InitStateEvent...");
 				restoreState(place);
 			}});
-		
 	}
 
 	protected abstract void restoreState(Place place) ;
