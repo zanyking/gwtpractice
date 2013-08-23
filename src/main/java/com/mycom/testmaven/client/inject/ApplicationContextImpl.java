@@ -28,26 +28,37 @@ public class ApplicationContextImpl implements ApplicationContext {
 	private final PlaceHistoryHandler historyHandler;
 	private final PlaceController placeController;
 	private Place defaultPlace;
+	private final EventBus mainEventBus;
 
 	@Inject
 	public ApplicationContextImpl(Provider<EventBus> eventBusProvider) {
 		
 		historyHandler = new PlaceHistoryHandler( 
 				(PlaceHistoryMapper) GWT.create(MyAppPlaceMapper.class));
+		mainEventBus = eventBusProvider.get();
 		
 		EventBus placeActivityEvtBus = eventBusProvider.get();
 
 		placeController = new PlaceController(placeActivityEvtBus);
-
-		SimpleLayoutPanel appWidget = new SimpleLayoutPanel();
-		//TODO: configure appWidget style...
-		ActivityManager activityManager = new ActivityManager(, placeActivityEvtBus);
-		
-        activityManager.setDisplay(appWidget);
 		historyHandler.register(
 				placeController, 
 				placeActivityEvtBus, 
 				defaultPlace);
+
+		SimpleLayoutPanel appWidget = new SimpleLayoutPanel();
+		
+		//TODO: configure appWidget style...
+		
+		ActivityManager activityManager = new ActivityManager(
+				new ActivityMapper() {
+					@Override
+					public Activity getActivity(Place place) {
+						return MyAppGinjector.DEFAULT.getMainActivity();
+					}
+				}, placeActivityEvtBus);
+        activityManager.setDisplay(appWidget);
+        
+		
 		
 		RootLayoutPanel.get().add(appWidget);
 	}
@@ -62,7 +73,7 @@ public class ApplicationContextImpl implements ApplicationContext {
 	 */
 	@Override
 	public EventBus getMainEventBus() {
-		return null;
+		return mainEventBus;
 	}
 
 	/*
@@ -73,7 +84,14 @@ public class ApplicationContextImpl implements ApplicationContext {
 	 */
 	@Override
 	public PlaceController getPlaceController() {
-		return null;
+		return placeController;
+	}
+
+
+
+	@Override
+	public void handleCurrentHistory() {
+		historyHandler.handleCurrentHistory();
 	}
 
 }

@@ -21,4 +21,6 @@ public interface ApplicationContext {
 	 * @return
 	 */
 	PlaceController getPlaceController();
+	
+	void handleCurrentHistory();
 }
