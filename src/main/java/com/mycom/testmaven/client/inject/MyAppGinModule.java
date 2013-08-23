@@ -35,6 +35,7 @@ public class MyAppGinModule extends AbstractGinModule {
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 		//experimental stuff...
 		bind(PlaceController.class).to(MyPlaceController.class).in(Singleton.class);
+		bind(ApplicationContext.class).to(ApplicationContextImpl.class).in(Singleton.class);
 		
 		// binding view implementations.
 		bind(ContentView.class).to(ContentViewImpl.class);

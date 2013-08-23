@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.SimpleLayoutPanel;
 import com.google.inject.Provider;
 import com.google.web.bindery.event.shared.EventBus;
 import com.mycom.testmaven.client.MyAppPlaceMapper;
+import com.mycom.testmaven.client.place.FirstPlace;
 
 /**
  * @author Ian YT Tsai (Zanyking)
@@ -27,8 +28,9 @@ public class ApplicationContextImpl implements ApplicationContext {
 
 	private final PlaceHistoryHandler historyHandler;
 	private final PlaceController placeController;
-	private Place defaultPlace;
 	private final EventBus mainEventBus;
+	
+	private Place defaultPlace = new FirstPlace();
 
 	@Inject
 	public ApplicationContextImpl(Provider<EventBus> eventBusProvider) {
