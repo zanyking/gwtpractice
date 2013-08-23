@@ -17,8 +17,8 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimpleLayoutPanel;
 import com.google.inject.Provider;
 import com.google.web.bindery.event.shared.EventBus;
-import com.mycom.testmaven.client.MyAppPlaceMapper;
 import com.mycom.testmaven.client.place.FirstPlace;
+import com.mycom.testmaven.client.place.MyAppPlaceMapper;
 
 /**
  * @author Ian YT Tsai (Zanyking)

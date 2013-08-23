@@ -1,13 +1,10 @@
 /**
  * 
  */
-package com.mycom.testmaven.client;
+package com.mycom.testmaven.client.place;
 
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
-import com.mycom.testmaven.client.place.FirstPlace;
-import com.mycom.testmaven.client.place.SecondPlace;
-import com.mycom.testmaven.client.place.ThirdPlace;
 
 /**
  * @author Ian YT Tsai (Zanyking)

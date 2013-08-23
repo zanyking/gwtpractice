@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mycom.testmaven.client;
+package com.mycom.testmaven.client.place;
 
 import javax.inject.Inject;
 
