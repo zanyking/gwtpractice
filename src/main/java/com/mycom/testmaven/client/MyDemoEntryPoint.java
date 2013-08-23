@@ -3,7 +3,9 @@
  */
 package com.mycom.testmaven.client;
 
+import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityManager;
+import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.Place;
@@ -13,6 +15,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.mycom.testmaven.client.activity.MyAppActivityMapper;
+import com.mycom.testmaven.client.inject.MyAppGinjector;
 import com.mycom.testmaven.client.place.FirstPlace;
 
 /**
@@ -37,8 +40,14 @@ public class MyDemoEntryPoint implements EntryPoint  {
 		
 		//Start Activity mapping...
 		//banner
-		MyAppActivityMapper myMapper = new MyAppActivityMapper(injector);
-		ActivityManager activityManager = new ActivityManager(myMapper, injector.getEventBus());
+//		MyAppActivityMapper myMapper = new MyAppActivityMapper(injector);
+		ActivityManager activityManager = new ActivityManager(new ActivityMapper() {
+			@Override
+			public Activity getActivity(Place place) {
+				return injector.getMainActivity();
+			}
+		}, injector.getEventBus());
+		
         activityManager.setDisplay(appWidget);
 
 //        Widget.asWidgetOrNull(w);

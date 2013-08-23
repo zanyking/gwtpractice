@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mycom.testmaven.client;
+package com.mycom.testmaven.client.inject;
 
 import javax.inject.Singleton;
 
@@ -9,6 +9,7 @@ import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
+import com.mycom.testmaven.client.MyPlaceController;
 import com.mycom.testmaven.client.activity.MainPresenterActivity;
 import com.mycom.testmaven.client.presenter.BannerPresenter;
 import com.mycom.testmaven.client.presenter.ContentPresenter;

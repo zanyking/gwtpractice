@@ -6,7 +6,7 @@ package com.mycom.testmaven.client.activity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
-import com.mycom.testmaven.client.MyAppGinjector;
+import com.mycom.testmaven.client.inject.MyAppGinjector;
 
 /**
  * @author Ian YT Tsai (Zanyking)

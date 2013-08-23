@@ -18,6 +18,7 @@ public abstract class AbstractPresenter {
 
 	public AbstractPresenter(EventBus evtBus) {
 		this.evtBus = evtBus;
+		//may not be a good idea, user can use activity instead.   
 		evtBus.addHandler(PlaceChangeEvent.TYPE, new PlaceChangeEvent.Handler(){
 			@Override
 			public void onPlaceChange(PlaceChangeEvent event) {

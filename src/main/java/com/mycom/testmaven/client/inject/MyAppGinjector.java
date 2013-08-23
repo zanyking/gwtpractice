@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mycom.testmaven.client;
+package com.mycom.testmaven.client.inject;
 
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;

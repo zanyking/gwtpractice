@@ -21,7 +21,7 @@ import com.mycom.testmaven.client.view.SidebarView;
  * @author Ian YT Tsai (Zanyking)
  *
  */
-public class MainPresenterActivity extends AbstractActivity implements MainView.Presenter{
+public class MainPresenterActivity extends MyAbstractActivity implements MainView.Presenter{
 	private MainView view;
 	
 	private PlaceController placeController;
@@ -54,8 +54,7 @@ public class MainPresenterActivity extends AbstractActivity implements MainView.
 	}
 
 	@Override
-	public void start(AcceptsOneWidget panel,
-			com.google.gwt.event.shared.EventBus eventBus) {
+	protected void start(AcceptsOneWidget panel, EventBus eventBus) {
 		try{
 			//drawing...
 			panel.setWidget(view.root());
