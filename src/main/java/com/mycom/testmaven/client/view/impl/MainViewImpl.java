@@ -5,9 +5,12 @@ package com.mycom.testmaven.client.view.impl;
 
 import javax.inject.Inject;
 
+import com.google.gwt.safehtml.client.SafeHtmlTemplates.Template;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 import com.mycom.testmaven.client.view.BannerView;
@@ -26,13 +29,13 @@ public class MainViewImpl extends Composite implements MainView{
 	
 	
 //	private static Binder uiBinder = GWT.create(Binder.class);
-	
+	@UiTemplate("MainViewImpl.ui.xml")
 	public interface Binder extends UiBinder <Widget, MainViewImpl>{
 	}
 	
 	
 	@UiField
-	Panel bannerPanel;
+	HTMLPanel bannerPanel;
 	@UiField
 	Panel sidebarPanel;
 	@UiField

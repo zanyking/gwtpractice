@@ -20,7 +20,7 @@ import com.mycom.testmaven.client.view.SidebarView;
  * @author Ian YT Tsai (Zanyking)
  *
  */
-public class MainPresenterActivity extends MyAbstractActivity implements MainView.Presenter{
+public class MainPresenterActivity extends NovaActivity implements MainView.Presenter{
 	private MainView view;
 	
 	private PlaceController placeController;

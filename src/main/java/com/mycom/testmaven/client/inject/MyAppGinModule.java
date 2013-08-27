@@ -10,6 +10,8 @@ import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.mycom.testmaven.client.activity.MainPresenterActivity;
+import com.mycom.testmaven.client.app.ApplicationContext;
+import com.mycom.testmaven.client.app.ApplicationContextImpl;
 import com.mycom.testmaven.client.place.MyPlaceController;
 import com.mycom.testmaven.client.presenter.BannerPresenter;
 import com.mycom.testmaven.client.presenter.ContentPresenter;
@@ -50,6 +52,8 @@ public class MyAppGinModule extends AbstractGinModule {
 		// entrypoint view.
 		bind(MainView.class).to(MainViewImpl.class).in(Singleton.class);
 		bind(MainView.Presenter.class).to(MainPresenterActivity.class).in(Singleton.class);
+		
+		
 		
 	}
 

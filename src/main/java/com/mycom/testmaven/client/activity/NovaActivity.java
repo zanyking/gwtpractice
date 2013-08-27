@@ -11,7 +11,7 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author Ian YT Tsai (Zanyking)
  * 
  */
-public abstract class MyAbstractActivity extends AbstractActivity {
+public abstract class NovaActivity extends AbstractActivity {
 
 	/*
 	 * Adapter between the old EventBus and the new one

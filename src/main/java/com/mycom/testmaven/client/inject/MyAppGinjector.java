@@ -8,6 +8,8 @@ import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
+import com.mycom.testmaven.client.app.ApplicationContext;
+import com.mycom.testmaven.client.app.UIInitiator;
 import com.mycom.testmaven.client.view.MainView;
 
 /**
@@ -22,4 +24,6 @@ public interface MyAppGinjector extends Ginjector {
 	EventBus getEventBus();
 	MainView.Presenter getMainActivity();
 	ApplicationContext getAppContext();
+	
+	UIInitiator getUIInitiator();
 }
