@@ -13,12 +13,13 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
+import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimpleLayoutPanel;
 import com.google.inject.Provider;
 import com.google.web.bindery.event.shared.EventBus;
 import com.mycom.testmaven.client.place.FirstPlace;
-import com.mycom.testmaven.client.place.MyAppPlaceMapper;
+import com.mycom.testmaven.client.place.MyAppPlaceHistoryMapper;
 
 /**
  * @author Ian YT Tsai (Zanyking)
@@ -36,7 +37,7 @@ public class ApplicationContextImpl implements ApplicationContext {
 	public ApplicationContextImpl(Provider<EventBus> eventBusProvider) {
 		
 		historyHandler = new PlaceHistoryHandler( 
-				(PlaceHistoryMapper) GWT.create(MyAppPlaceMapper.class));
+				(PlaceHistoryMapper) GWT.create(MyAppPlaceHistoryMapper.class));
 		mainEventBus = eventBusProvider.get();
 		
 		EventBus placeActivityEvtBus = eventBusProvider.get();
@@ -49,8 +50,15 @@ public class ApplicationContextImpl implements ApplicationContext {
 
 		SimpleLayoutPanel appWidget = new SimpleLayoutPanel();
 		
+		initActivityManagement(placeActivityEvtBus, appWidget);
+
+		RootLayoutPanel.get().add(appWidget);
+	}
+	
+	
+	private void initActivityManagement( EventBus placeActivityEvtBus, 
+			AcceptsOneWidget appWidget){
 		//TODO: configure appWidget style...
-		
 		ActivityManager activityManager = new ActivityManager(
 				new ActivityMapper() {
 					@Override
@@ -58,38 +66,25 @@ public class ApplicationContextImpl implements ApplicationContext {
 						return MyAppGinjector.DEFAULT.getMainActivity();
 					}
 				}, placeActivityEvtBus);
+		
+		//TODO: init MasterV
+		//TODO: init MasterH
+		//TODO: init Content
+		//TODO: init aside
+		
         activityManager.setDisplay(appWidget);
-        
-		
-		
-		RootLayoutPanel.get().add(appWidget);
 	}
-
 	
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.mycom.testmaven.client.inject.ApplicationContext#getMainEventBus()
-	 */
 	@Override
 	public EventBus getMainEventBus() {
 		return mainEventBus;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.mycom.testmaven.client.inject.ApplicationContext#getPlaceController()
-	 */
 	@Override
 	public PlaceController getPlaceController() {
 		return placeController;
 	}
-
-
 
 	@Override
 	public void handleCurrentHistory() {

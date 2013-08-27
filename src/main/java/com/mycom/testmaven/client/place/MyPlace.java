@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Map;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 import com.mycom.testmaven.client.LocalHashs;
 
 /**
@@ -15,6 +16,12 @@ import com.mycom.testmaven.client.LocalHashs;
  */
 public abstract class MyPlace extends Place {
 
+	
+	public static final Class<?>[] Tokenizers = 
+			new Class<?>[]{
+		
+	};
+	
 	protected String hash;
 
 	public MyPlace(){};

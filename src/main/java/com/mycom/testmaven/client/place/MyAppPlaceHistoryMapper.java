@@ -15,6 +15,6 @@ import com.google.gwt.place.shared.WithTokenizers;
 	SecondPlace.Tokenizer.class,
 	ThirdPlace.Tokenizer.class
 })
-public interface MyAppPlaceMapper extends PlaceHistoryMapper{
-
+public interface MyAppPlaceHistoryMapper extends PlaceHistoryMapper{
+	
 }
